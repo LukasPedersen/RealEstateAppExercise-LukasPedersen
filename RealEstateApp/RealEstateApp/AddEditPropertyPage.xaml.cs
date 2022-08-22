@@ -102,5 +102,12 @@ namespace RealEstateApp
         {
             await Navigation.PopToRootAsync();
         }
+
+        private async void Set_Position_Button_Clicked(object sender, System.EventArgs e)
+        {
+            Location location = await Geolocation.GetLocationAsync();
+            Property.Latitude = location.Latitude;
+            Property.Longitude = location.Longitude;
+        }
     }
 }

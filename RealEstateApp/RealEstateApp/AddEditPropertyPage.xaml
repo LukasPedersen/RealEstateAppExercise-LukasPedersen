@@ -15,7 +15,7 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#E8E8E8">
+        <StackLayout BackgroundColor="#E8E8E8" Orientation="Horizontal">
             <Label
                 BackgroundColor="{Binding StatusColor}"
                 IsVisible="{Binding StatusMessage, Converter={converters:StringBoolConverter}}"
@@ -33,6 +33,30 @@
                         </Label.FormattedText>
                     </Label>
                     <Entry FontSize="Medium" Text="{Binding Property.Address}" />
+
+                    <Label Text="Location">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontFamily="FA-solid" Text="{x:Static fa:IconFont.Map}"/>
+                                <Span Text=" "/>
+                                <Span Text="Location"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Lat("/>
+                                <Span Text="{Binding Property.Latitude}"/>
+                                <Span Text=")     "/>
+                                <Span Text="Lng("/>
+                                <Span Text="{Binding Property.Longitude}"/>
+                                <Span Text=")"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+                    <Button Clicked="Set_Position_Button_Clicked" BackgroundColor="#22cfa7" FontFamily="FA-solid" Text="{Static fa:IconFont.MapPin}"/>
 
                     <Label FontSize="Medium" FontFamily="FA-solid">
                         <Label.FormattedText>
