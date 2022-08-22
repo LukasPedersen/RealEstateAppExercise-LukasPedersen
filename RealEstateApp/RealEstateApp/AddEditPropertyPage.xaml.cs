@@ -2,6 +2,7 @@
 using RealEstateApp.Services;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Xamarin.Essentials;
 using TinyIoC;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -54,7 +55,7 @@ namespace RealEstateApp
         public AddEditPropertyPage(Property property = null)
         {
             InitializeComponent();
-
+            
             Repository = TinyIoCContainer.Current.Resolve<IRepository>();
             Agents = new ObservableCollection<Agent>(Repository.GetAgents());
 
