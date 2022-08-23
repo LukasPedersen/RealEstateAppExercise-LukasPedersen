@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System;
 using System.Runtime.CompilerServices;
+using System.Threading;
 
 namespace RealEstateApp
 {
@@ -15,6 +16,7 @@ namespace RealEstateApp
     public partial class AddEditPropertyPage : ContentPage
     {
         private IRepository Repository;
+        CancellationTokenSource ttscts;
 
         #region PROPERTIES
         public ObservableCollection<Agent> Agents { get; }
@@ -108,6 +110,19 @@ namespace RealEstateApp
            CheckConnection();
         }
 
+        protected override void OnDisappearing()
+        {
+            Vibration.Cancel();
+            CancelSpeech();
+        }
+
+        public void CancelSpeech()
+        {
+            if (ttscts?.IsCancellationRequested ?? true)
+                return;
+
+            ttscts.Cancel();
+        }
 
         private bool CheckConnection()
         {
@@ -146,9 +161,16 @@ namespace RealEstateApp
 
         private async void WarnBadSiganl()
         {
+            ttscts = new CancellationTokenSource();
+            var ttsSettings = new SpeechOptions()
+            {
+                Volume = .75f,
+                Pitch = 1.0f
+            };
+
             Vibration.Vibrate();
             SignalIndicatorMesaage.Text = "Signal strength is not sufficient enough to upload";
-            await TextToSpeech.SpeakAsync("Signal styrke er ikke stærkt nok, prøv igen senere");
+            await TextToSpeech.SpeakAsync("Signal styrke er ikke stærkt nok, prøv igen senere",ttsSettings, ttscts.Token);
         }
 
         private async void CancelSave_Clicked(object sender, System.EventArgs e)
