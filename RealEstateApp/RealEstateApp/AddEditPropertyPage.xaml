@@ -55,7 +55,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+                    <Button Clicked="Set_Address_Button_Clicked" BackgroundColor="#22cfa7" FontFamily="FA-solid" Text="{Static fa:IconFont.Home}"/>
                     <Button Clicked="Set_Position_Button_Clicked" BackgroundColor="#22cfa7" FontFamily="FA-solid" Text="{Static fa:IconFont.MapPin}"/>
 
                     <Label FontSize="Medium" FontFamily="FA-solid">

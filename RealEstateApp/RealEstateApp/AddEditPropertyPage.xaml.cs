@@ -6,6 +6,7 @@ using Xamarin.Essentials;
 using TinyIoC;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System;
 
 namespace RealEstateApp
 {
@@ -28,10 +29,10 @@ namespace RealEstateApp
                 {
                     SelectedAgent = Agents.FirstOrDefault(x => x.Id == _property?.AgentId);
                 }
-               
+
             }
         }
-    
+
         private Agent _selectedAgent;
 
         public Agent SelectedAgent
@@ -43,7 +44,7 @@ namespace RealEstateApp
                 {
                     _selectedAgent = value;
                     Property.AgentId = _selectedAgent?.Id;
-                }                 
+                }
             }
         }
 
@@ -55,7 +56,7 @@ namespace RealEstateApp
         public AddEditPropertyPage(Property property = null)
         {
             InitializeComponent();
-            
+
             Repository = TinyIoCContainer.Current.Resolve<IRepository>();
             Agents = new ObservableCollection<Agent>(Repository.GetAgents());
 
@@ -69,7 +70,7 @@ namespace RealEstateApp
                 Title = "Edit Property";
                 Property = property;
             }
-         
+
             BindingContext = this;
         }
 
@@ -84,7 +85,7 @@ namespace RealEstateApp
             {
                 Repository.SaveProperty(Property);
                 await Navigation.PopToRootAsync();
-            }   
+            }
         }
 
         public bool IsValid()
@@ -108,6 +109,32 @@ namespace RealEstateApp
             Location location = await Geolocation.GetLocationAsync();
             Property.Latitude = location.Latitude;
             Property.Longitude = location.Longitude;
+
+            var placemarks = await Geocoding.GetPlacemarksAsync((double)Property.Latitude, (double)Property.Longitude);
+            var placemark = placemarks?.FirstOrDefault();
+            if (placemark != null)
+            {
+                var geocodeAddress =
+                    
+                    $"{placemark.Thoroughfare}\n" +
+                    $"{placemark.FeatureName}\n" +
+                    $"{placemark.Locality}\n" +
+                    $"{placemark.PostalCode}\n" +
+                    $"{placemark.CountryName}\n";
+
+                Property.Address = geocodeAddress.ToString();
+            }
+        }
+
+        private async void Set_Address_Button_Clicked(object sender, EventArgs e)
+        {
+            var addressLocation = await Geocoding.GetLocationsAsync(Property.Address);
+            var location = addressLocation?.FirstOrDefault();
+            if (location != null)
+            {
+                Property.Latitude = location.Latitude;
+                Property.Longitude = location.Longitude;
+            }
         }
     }
 }
