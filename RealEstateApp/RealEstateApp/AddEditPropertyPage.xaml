@@ -164,6 +164,7 @@
                         ItemDisplayBinding="{Binding Name}"
                         ItemsSource="{Binding Agents}"
                         SelectedItem="{Binding SelectedAgent}" />
+                    <Button FontFamily="FA-solid" Text="{x:Static fa:IconFont.DumpsterFire}" Clicked="Helicopter_Button_Clicked"/>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

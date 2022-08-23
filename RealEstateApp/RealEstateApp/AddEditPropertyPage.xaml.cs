@@ -90,10 +90,6 @@ namespace RealEstateApp
                     await Navigation.PopToRootAsync();
                 }
             }
-            else
-            {
-                WarnBadSiganl();
-            }
         }
 
         public bool IsValid()
@@ -148,10 +144,11 @@ namespace RealEstateApp
             }
         }
 
-        private void WarnBadSiganl()
+        private async void WarnBadSiganl()
         {
             Vibration.Vibrate();
             SignalIndicatorMesaage.Text = "Signal strength is not sufficient enough to upload";
+            await TextToSpeech.SpeakAsync("Signal styrke er ikke stærkt nok, prøv igen senere");
         }
 
         private async void CancelSave_Clicked(object sender, System.EventArgs e)
@@ -182,10 +179,6 @@ namespace RealEstateApp
                     Property.Address = geocodeAddress.ToString();
                 }
             }
-            else
-            {
-                WarnBadSiganl();
-            }
         }
 
         private async void Set_Address_Button_Clicked(object sender, EventArgs e)
@@ -200,10 +193,11 @@ namespace RealEstateApp
                     Property.Longitude = location.Longitude;
                 }
             }
-            else
-            {
-                WarnBadSiganl();
-            }
+        }
+
+        private async void Helicopter_Button_Clicked(object sender, EventArgs e)
+        {
+            await TextToSpeech.SpeakAsync("Bananananannanananananananananananananananananananananananananananananana");
         }
     }
 }
