@@ -197,7 +197,15 @@ namespace RealEstateApp
 
         private async void Helicopter_Button_Clicked(object sender, EventArgs e)
         {
+            await Flashlight.TurnOnAsync();
+            await Flashlight.TurnOffAsync();
             await TextToSpeech.SpeakAsync("Bananananannanananananananananananananananananananananananananananananana");
+            await Flashlight.TurnOnAsync();
+            await Flashlight.TurnOffAsync();
+            await Flashlight.TurnOnAsync();
+            await Flashlight.TurnOffAsync();
+            await Flashlight.TurnOnAsync();
+            await Flashlight.TurnOffAsync();
         }
     }
 }
