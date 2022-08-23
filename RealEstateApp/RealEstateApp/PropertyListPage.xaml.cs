@@ -1,8 +1,11 @@
 ﻿using RealEstateApp.Models;
 using RealEstateApp.Services;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using TinyIoC;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,8 +14,10 @@ namespace RealEstateApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PropertyListPage : ContentPage
     {
+        public bool sortFlip { get; set; }
+
         IRepository Repository;
-        public ObservableCollection<PropertyListItem> PropertiesCollection { get; } = new ObservableCollection<PropertyListItem>(); 
+        public ObservableCollection<PropertyListItem> PropertiesCollection { get; } = new ObservableCollection<PropertyListItem>();
 
         public PropertyListPage()
         {
@@ -20,7 +25,7 @@ namespace RealEstateApp
 
             Repository = TinyIoCContainer.Current.Resolve<IRepository>();
             LoadProperties();
-            BindingContext = this; 
+            BindingContext = this;
         }
 
         protected override void OnAppearing()
@@ -37,14 +42,20 @@ namespace RealEstateApp
             list.IsRefreshing = false;
         }
 
-        void LoadProperties()
+        async void LoadProperties()
         {
             PropertiesCollection.Clear();
             var items = Repository.GetProperties();
 
+            
+
             foreach (Property item in items)
             {
-                PropertiesCollection.Add(new PropertyListItem(item));
+                PropertyListItem listItem = new PropertyListItem(item);
+                Location propertyLocation = new Location((double)listItem.Property.Latitude, (double)listItem.Property.Longitude);
+                listItem.Distance = Location.CalculateDistance(propertyLocation, await Geolocation.GetLastKnownLocationAsync(), DistanceUnits.Kilometers);
+
+                PropertiesCollection.Add(listItem);
             }
         }
 
@@ -56,6 +67,6 @@ namespace RealEstateApp
         private async void AddProperty_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddEditPropertyPage());
-        }    
+        }
     }
 }

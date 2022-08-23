@@ -18,7 +18,7 @@
             CachingStrategy="RecycleElement"
             HasUnevenRows="true"
             IsPullToRefreshEnabled="true"
-            RefreshControlColor =" Color.Red"
+            RefreshControlColor ="#22cfa7"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             Refreshing="OnRefresh"
             ItemTapped="ItemsListView_ItemTapped"
@@ -44,6 +44,7 @@
                                 Source="{Binding Property.MainImageUrl}" />
                             <Grid Grid.Column="1" Margin="0,0,10,0">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
@@ -101,6 +102,11 @@
                                     Grid.Row="3"
                                     FontSize="13"
                                     Text="{Binding Property.LandSize, StringFormat='Land Size: {0} &#x33a1;'}" />
+                                <Label
+                                    Grid.Row="4"
+                                    FontSize="13"
+                                    
+                                    Text="{Binding Distance, StringFormat='{0:#,#.0} Km away'}"/>
                             </Grid>
                         </Grid>
                     </ViewCell>
