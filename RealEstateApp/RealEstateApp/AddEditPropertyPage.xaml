@@ -23,6 +23,8 @@
             <ScrollView VerticalOptions="FillAndExpand">
                 <StackLayout Padding="15" Spacing="20">
 
+                    <Label x:Name="SignalIndicator" HorizontalOptions="Start" VerticalOptions="End" FontFamily="FA-solid" FontSize="15" Text="{x:Static fa:IconFont.Wifi}"/>
+                    <Label x:Name="SignalIndicatorMesaage" HorizontalOptions="Center" VerticalOptions="Start" FontFamily="FA-solid" FontSize="15"/>
                     <Label FontSize="Medium" FontFamily="FA-solid">
                         <Label.FormattedText>
                             <FormattedString>
@@ -58,6 +60,7 @@
                     <Button Clicked="Set_Address_Button_Clicked" BackgroundColor="#22cfa7" FontFamily="FA-solid" Text="{Static fa:IconFont.Home}"/>
                     <Button Clicked="Set_Position_Button_Clicked" BackgroundColor="#22cfa7" FontFamily="FA-solid" Text="{Static fa:IconFont.MapPin}"/>
 
+                    
                     <Label FontSize="Medium" FontFamily="FA-solid">
                         <Label.FormattedText>
                             <FormattedString>
