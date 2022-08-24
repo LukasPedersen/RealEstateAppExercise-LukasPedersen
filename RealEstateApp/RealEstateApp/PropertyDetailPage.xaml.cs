@@ -19,8 +19,16 @@ namespace RealEstateApp
             IRepository Repository = TinyIoCContainer.Current.Resolve<IRepository>();
             Agent = Repository.GetAgents().FirstOrDefault(x => x.Id == Property.AgentId);
 
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (s, e) => {
+                await Navigation.PushAsync(new ImageListPage(propertyListItem.Property));
+            };
+            MainImage.GestureRecognizers.Add(tapGestureRecognizer);
+
             BindingContext = this;
         }
+
+
 
         public Agent Agent { get; set; }
 

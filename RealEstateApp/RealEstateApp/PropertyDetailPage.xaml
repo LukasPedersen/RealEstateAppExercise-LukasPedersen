@@ -16,6 +16,7 @@
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
               Padding="15">
             <Image
+                x:Name="MainImage"
                 Grid.Row="0"
                 Margin="-10,-10,-10,0"
                 Aspect="AspectFill"
