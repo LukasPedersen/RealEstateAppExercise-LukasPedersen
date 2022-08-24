@@ -60,7 +60,7 @@
                     <Button Clicked="Set_Address_Button_Clicked" BackgroundColor="#22cfa7" FontFamily="FA-solid" Text="{Static fa:IconFont.Home}"/>
                     <Button Clicked="Set_Position_Button_Clicked" BackgroundColor="#22cfa7" FontFamily="FA-solid" Text="{Static fa:IconFont.MapPin}"/>
 
-                    
+
                     <Label FontSize="Medium" FontFamily="FA-solid">
                         <Label.FormattedText>
                             <FormattedString>
@@ -117,7 +117,7 @@
                         Keyboard="Numeric"
                         ReturnType="Next"
                         Text="{Binding Property.Parking, Converter={converters:NullableIntConverter}}" />
-                    
+
                     <Label FontSize="Medium" FontFamily="FA-solid">
                         <Label.FormattedText>
                             <FormattedString>
@@ -134,7 +134,7 @@
                         Keyboard="Numeric"
                         ReturnType="Next"
                         Text="{Binding Property.LandSize, Converter={converters:NullableIntConverter}}" />
-                    
+
                     <Label FontSize="Medium" FontFamily="FA-solid">
                         <Label.FormattedText>
                             <FormattedString>
@@ -149,6 +149,19 @@
                         FontSize="Medium"
                         HeightRequest="50"
                         Text="{Binding Property.Description}" />
+                    <Label FontFamily="FA-solid" FontSize="Medium">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static fa:IconFont.Compass}"/>
+                                <Span Text="Aspect"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <StackLayout Orientation="Horizontal">
+                        <Entry HorizontalOptions="StartAndExpand" WidthRequest="200" IsReadOnly="True" Text="West"/>
+                        <Button FontFamily="FA-solid" Clicked="DraftingCompass_Button_Clicked" FontSize="13" Text="{x:Static fa:IconFont.DraftingCompass}"/>
+                    </StackLayout>
+
 
                     <Label FontSize="Medium" FontFamily="FA-solid" >
                         <Label.FormattedText>

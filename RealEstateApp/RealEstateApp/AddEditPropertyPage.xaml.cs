@@ -229,5 +229,10 @@ namespace RealEstateApp
             await Flashlight.TurnOnAsync();
             await Flashlight.TurnOffAsync();
         }
+
+        private async void DraftingCompass_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CompassPage());
+        }
     }
 }

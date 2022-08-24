@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealEstateApp.CompassPage"
+             xmlns:fa="clr-namespace:FontAwesome">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*" >
+                <Label FontSize="Large" FontFamily="FA-solid" Margin="0,20" HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Static fa:IconFont.ArrowUp}"/>
+                            <Span Text=" " />
+                            <Span x:Name="AspectSpan" />
+                            <Span Text=" Aspect" />
+                            <Span Text=" " />
+                            <Span Text="{Static fa:IconFont.ArrowUp}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Image x:Name="CompassImage" Source="compass.png" 
+            Rotation="0" 
+            Grid.Row="1" Grid.Column="0" 
+            HorizontalOptions="Center"  />
+
+                <Label x:Name="HeadingLabel" 
+            Margin="0,20" 
+            Grid.Row="2" Grid.Column="0" 
+            HorizontalOptions="Center" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
