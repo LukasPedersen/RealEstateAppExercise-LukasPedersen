@@ -17,5 +17,11 @@
                                  Glyph="{x:Static fa:IconFont.Info}"/>
             </ShellContent.Icon>
         </ShellContent>
+        <ShellContent Title="Height cal" ContentTemplate="{DataTemplate views:HeightCalculatorPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FA-solid"
+                                 Glyph="{x:Static fa:IconFont.Cloud}"/>
+            </ShellContent.Icon>
+        </ShellContent>
     </FlyoutItem>
 </Shell>

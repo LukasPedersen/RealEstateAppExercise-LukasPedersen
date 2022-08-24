@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealEstateApp.HeightCalculatorPage"
+             xmlns:heightClass="clr-namespace:RealEstateApp">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label HorizontalOptions="Center" VerticalOptions="End" FontSize="Title" Text="{Binding CurrentAltitude, Mode=TwoWay, StringFormat='Current Altitude {0:N1}M'}"/>
+            
+            <Entry x:Name="Measurement_Label" Placeholder="Measurement name"/>
+            <Button BackgroundColor="#22cfa7"  Text="Save" Clicked="Save_Button_Clicked"/>
+            
+            <StackLayout x:DataType="heightClass:BarometerMeasurement">
+                <ListView x:Name="BarometerMeasurementsList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Text="{Binding Display}"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Label HorizontalOptions="Center" VerticalOptions="Start" FontSize="15" Text="{Binding CurrentPressure, Mode=TwoWay, StringFormat='Current air Pressure {0:N1}'}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
