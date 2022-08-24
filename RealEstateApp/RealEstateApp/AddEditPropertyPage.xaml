@@ -158,7 +158,7 @@
                         </Label.FormattedText>
                     </Label>
                     <StackLayout Orientation="Horizontal">
-                        <Entry HorizontalOptions="StartAndExpand" WidthRequest="200" IsReadOnly="True" Text="West"/>
+                        <Entry HorizontalOptions="StartAndExpand" WidthRequest="200" IsReadOnly="True" Text="{Binding Property.PropertyHeading}"/>
                         <Button FontFamily="FA-solid" Clicked="DraftingCompass_Button_Clicked" FontSize="13" Text="{x:Static fa:IconFont.DraftingCompass}"/>
                     </StackLayout>
 

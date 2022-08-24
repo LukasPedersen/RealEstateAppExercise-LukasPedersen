@@ -28,6 +28,8 @@
             Margin="0,20" 
             Grid.Row="2" Grid.Column="0" 
             HorizontalOptions="Center" />
+
+                <Button Grid.Row="2" Text="Save" Clicked="Save_Button_Clicked"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

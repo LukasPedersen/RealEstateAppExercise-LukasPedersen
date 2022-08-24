@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,11 @@ namespace RealEstateApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CompassPage : ContentPage
     {
-        public CompassPage()
+        public Property _Property { get; set; }
+        public CompassPage(Property property)
         {
             InitializeComponent();
-
+            _Property = property;
             Compass.ReadingChanged += Compass_ReadingChanged;
         }
 
@@ -36,17 +38,25 @@ namespace RealEstateApp
         void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
         {
             var data = e.Reading;
-            CompassImage.Rotation = data.HeadingMagneticNorth;
+
+            CompassImage.Rotation = ((data.HeadingMagneticNorth) * (-1) );
             HeadingLabel.Text = data.HeadingMagneticNorth.ToString();
-            if (data.HeadingMagneticNorth < 90 && data.HeadingMagneticNorth > 0)
+            if (data.HeadingMagneticNorth < 100 && data.HeadingMagneticNorth > 80)
             {
                 AspectSpan.Text = "Øst";
             }
-            else if (data.HeadingMagneticNorth < 180 && data.HeadingMagneticNorth > 180)
+            else if (data.HeadingMagneticNorth < 190 && data.HeadingMagneticNorth > 170)
             {
-
+                AspectSpan.Text = "Syd";
             }
-            // Process Heading Magnetic North
+            else if (data.HeadingMagneticNorth < 280 && data.HeadingMagneticNorth > 260)
+            {
+                AspectSpan.Text = "Vest";
+            }
+            else if (data.HeadingMagneticNorth < 360 && data.HeadingMagneticNorth > 350)
+            {
+                AspectSpan.Text = "Nord";
+            }
         }
 
         public void ToggleCompass()
@@ -66,6 +76,13 @@ namespace RealEstateApp
             {
                 // Some other exception has occurred
             }
+        }
+
+        private async void Save_Button_Clicked(object sender, EventArgs e)
+        {
+            ToggleCompass();
+            _Property.PropertyHeading = AspectSpan.Text;
+            await Navigation.PopAsync();
         }
     }
 }
