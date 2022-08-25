@@ -33,7 +33,25 @@
                 FontSize="16"
                 LineBreakMode="NoWrap"
                 Text="{Binding Property.Address}" />
-            <Grid Grid.Row="3"
+            <StackLayout Grid.Row="3" Orientation="Horizontal">
+                <Button
+                    x:Name="Map_Button"
+                    Grid.Row="3"
+                    WidthRequest="50"
+                    FontFamily="FA-solid"
+                    FontSize="14"
+                    Clicked="Map_Button_Clicked"
+                    Text="{x:Static fa:IconFont.MapMarkedAlt}"/>
+                <Button
+                    x:Name="Directions_Button"
+                    Grid.Row="3"
+                    WidthRequest="50"
+                    FontFamily="FA-solid"
+                    FontSize="14"
+                    Clicked="Directions_Button_Clicked"
+                    Text="{x:Static fa:IconFont.Directions}"/>
+            </StackLayout>
+            <Grid Grid.Row="4"
                   RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
                 <Label
                     Grid.Column="0"
@@ -67,22 +85,22 @@
                     Text="{Binding Property.Parking}" />
             </Grid>
             <Label
-                Grid.Row="4"
+                Grid.Row="5"
                 FontSize="14"
                 Text="{Binding Property.LandSize, StringFormat='Land size: {0} &#x33a1;'}" />
             <Label
-                Grid.Row="5"
+                Grid.Row="6"
                 Margin="0,20,0,0"
                 FontAttributes="Bold"
                 FontSize="14"
                 Text="Description:" />
             <Label
-                Grid.Row="6"
+                Grid.Row="7"
                 Margin="0,0,0,20"
                 FontSize="14"
                 Text="{Binding Property.Description}" />
 
-            <StackLayout Grid.Row="7" Orientation="Horizontal">
+            <StackLayout Grid.Row="8" Orientation="Horizontal">
                 <Label
                     FontFamily="FA-solid"
                     FontSize="14"
@@ -93,7 +111,7 @@
                     Text="{Binding Property.PropertyVendor.FullName}" />
             </StackLayout>
 
-            <StackLayout Grid.Row="8">
+            <StackLayout Grid.Row="9">
                 <StackLayout Orientation="Horizontal">
                     <Label
                         Margin="0,15,0,0"
@@ -130,11 +148,11 @@
             
 
             <Label
-                Grid.Row="9"
+                Grid.Row="10"
                 FontAttributes="Bold"
                 FontSize="14"
                 Text="Listed by:" />
-            <Grid Grid.Row="9">
+            <Grid Grid.Row="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />

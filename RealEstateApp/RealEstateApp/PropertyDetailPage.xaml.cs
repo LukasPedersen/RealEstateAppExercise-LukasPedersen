@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using TinyIoC;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -93,6 +94,25 @@ namespace RealEstateApp
                 throw;
             }
             
+        }
+
+        private async void Directions_Button_Clicked(object sender, EventArgs e)
+        {
+            var location = new Location((double)Property.Latitude, (double)Property.Longitude);
+            var options = new MapLaunchOptions
+            {
+                Name = $"{Property.Address}",
+                NavigationMode = NavigationMode.Driving
+            };
+            await location.OpenMapsAsync(options);
+        }
+
+        private async void Map_Button_Clicked(object sender, EventArgs e)
+        {
+            var location = await Geocoding.GetPlacemarksAsync((double)Property.Latitude, (double)Property.Longitude);
+            var placemark = location?.FirstOrDefault();
+
+            await Map.OpenAsync(placemark);
         }
     }
 }
