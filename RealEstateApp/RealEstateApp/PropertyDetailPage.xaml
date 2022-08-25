@@ -50,6 +50,30 @@
                     FontSize="14"
                     Clicked="Directions_Button_Clicked"
                     Text="{x:Static fa:IconFont.Directions}"/>
+                <Button
+                    x:Name="Modal_Button"
+                    Grid.Row="3"
+                    WidthRequest="50"
+                    FontFamily="FA-solid"
+                    FontSize="14"
+                    Clicked="Modal_Button_Clicked"
+                    Text="{x:Static fa:IconFont.Link}"/>
+                <Button
+                    x:Name="ModalExternal_Button"
+                    Grid.Row="3"
+                    WidthRequest="50"
+                    FontFamily="FA-solid"
+                    FontSize="14"
+                    Clicked="ModalExternal_Button_Clicked"
+                    Text="{x:Static fa:IconFont.ExternalLinkAlt}"/>
+                <Button
+                    x:Name="File_Button"
+                    Grid.Row="3"
+                    WidthRequest="50"
+                    FontFamily="FA-solid"
+                    FontSize="14"
+                    Clicked="File_Button_Clicked"
+                    Text="{x:Static fa:IconFont.FileSignature}"/>
             </StackLayout>
             <Grid Grid.Row="4"
                   RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">

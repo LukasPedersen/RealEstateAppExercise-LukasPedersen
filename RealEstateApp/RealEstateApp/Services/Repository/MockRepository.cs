@@ -1,7 +1,9 @@
 ﻿using RealEstateApp.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace RealEstateApp.Services.Repository
 {
@@ -43,6 +45,13 @@ namespace RealEstateApp.Services.Repository
                 _properties[existingIndex] = property;
             }
         }
+        private string GetPath()
+        {
+            var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var attachmentFilePath = Path.Combine(folder, "contract.pdf");
+
+            return attachmentFilePath;
+        }
 
         private void LoadProperties()
         {
@@ -62,7 +71,8 @@ namespace RealEstateApp.Services.Repository
                         FirstName = "Bob",
                         LastName = "Han bygger",
                         Phone = "+45867584954"
-                    }
+                    },
+                    ContractFilePath = GetPath()
                 },
                 new Property
                 {
@@ -78,7 +88,8 @@ namespace RealEstateApp.Services.Repository
                         FirstName = "Bob",
                         LastName = "Han bygger",
                         Phone = "+45432523443"
-                    }
+                    },
+                    ContractFilePath = GetPath()
                 },
                 new Property
                 {
@@ -93,7 +104,8 @@ namespace RealEstateApp.Services.Repository
                         FirstName = "Bob",
                         LastName = "Han bygger",
                         Phone = "+454525762"
-                    }
+                    },
+                    ContractFilePath = GetPath()
                 },
                 new Property
                 {
@@ -109,7 +121,8 @@ namespace RealEstateApp.Services.Repository
                         FirstName = "Bob",
                         LastName = "Han bygger",
                         Phone = "+455323423"
-                    }
+                    },
+                    ContractFilePath = GetPath()
                 },
                 new Property
                 {
@@ -124,7 +137,8 @@ namespace RealEstateApp.Services.Repository
                         FirstName = "Bob",
                         LastName = "Han bygger",
                         Phone = "+450879808"
-                    }
+                    },
+                    ContractFilePath = GetPath()
                 }
             };
         }

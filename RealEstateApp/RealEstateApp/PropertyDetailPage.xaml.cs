@@ -2,6 +2,7 @@
 using RealEstateApp.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -104,7 +105,15 @@ namespace RealEstateApp
                 Name = $"{Property.Address}",
                 NavigationMode = NavigationMode.Driving
             };
-            await location.OpenMapsAsync(options);
+            
+            try
+            {
+                await location.OpenMapsAsync(options);
+            }
+            catch (FeatureNotSupportedException)
+            {
+                throw;
+            }
         }
 
         private async void Map_Button_Clicked(object sender, EventArgs e)
@@ -112,7 +121,65 @@ namespace RealEstateApp
             var location = await Geocoding.GetPlacemarksAsync((double)Property.Latitude, (double)Property.Longitude);
             var placemark = location?.FirstOrDefault();
 
-            await Map.OpenAsync(placemark);
+            try
+            {
+                await Map.OpenAsync(placemark);
+            }
+            catch (FeatureNotSupportedException)
+            {
+                throw;
+            }
+            
+        }
+
+        private async void Modal_Button_Clicked(object sender, EventArgs e)
+        {
+            var options = new BrowserLaunchOptions
+            {
+                LaunchMode = BrowserLaunchMode.SystemPreferred,
+                TitleMode = BrowserTitleMode.Show,
+                PreferredToolbarColor = Color.Blue,
+                PreferredControlColor = Color.Red
+            };
+
+            try
+            {
+                await Browser.OpenAsync("http://pluralsight.com", options);
+            }
+            catch (FeatureNotSupportedException)
+            {
+
+                throw;
+            }
+        }
+
+        private async void ModalExternal_Button_Clicked(object sender, EventArgs e)
+        {
+            var options = new BrowserLaunchOptions
+            {
+                LaunchMode = BrowserLaunchMode.External,
+                TitleMode = BrowserTitleMode.Show,
+                PreferredToolbarColor = Color.Blue,
+                PreferredControlColor = Color.Red
+            };
+
+            try
+            {
+                await Browser.OpenAsync("http://pluralsight.com", options);
+            }
+            catch (FeatureNotSupportedException)
+            {
+
+                throw;
+            }
+        }
+
+        private async void File_Button_Clicked(object sender, EventArgs e)
+        {
+            await Launcher.OpenAsync(new OpenFileRequest
+            {
+                File = new ReadOnlyFile(Property.ContractFilePath)
+            });
         }
     }
 }
