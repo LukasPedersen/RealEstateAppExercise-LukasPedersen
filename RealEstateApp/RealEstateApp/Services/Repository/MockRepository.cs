@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace RealEstateApp.Services.Repository
@@ -11,9 +12,10 @@ namespace RealEstateApp.Services.Repository
     {
         private List<Agent> _agents;
         private List<Property> _properties;
-
+        public string propertyFile;
         public MockRepository()
         {
+            GetPath();
             LoadProperties();
             LoadAgents();
         }
@@ -45,12 +47,18 @@ namespace RealEstateApp.Services.Repository
                 _properties[existingIndex] = property;
             }
         }
-        private string GetPath()
+        private async void GetPath()
         {
             var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var attachmentFilePath = Path.Combine(folder, "contract.pdf");
+            propertyFile = Path.Combine(folder, "contract.pdf");
 
-            return attachmentFilePath;
+            using (var stream = await FileSystem.OpenAppPackageFileAsync("contract.pdf"))
+            {
+                using (var file = File.OpenWrite(propertyFile))
+                {
+                    await stream.CopyToAsync(file);
+                }
+            }
         }
 
         private void LoadProperties()
@@ -72,7 +80,7 @@ namespace RealEstateApp.Services.Repository
                         LastName = "Han bygger",
                         Phone = "+45867584954"
                     },
-                    ContractFilePath = GetPath()
+                    ContractFilePath = propertyFile
                 },
                 new Property
                 {
@@ -89,7 +97,7 @@ namespace RealEstateApp.Services.Repository
                         LastName = "Han bygger",
                         Phone = "+45432523443"
                     },
-                    ContractFilePath = GetPath()
+                    ContractFilePath = propertyFile
                 },
                 new Property
                 {
@@ -105,7 +113,7 @@ namespace RealEstateApp.Services.Repository
                         LastName = "Han bygger",
                         Phone = "+454525762"
                     },
-                    ContractFilePath = GetPath()
+                    ContractFilePath = propertyFile
                 },
                 new Property
                 {
@@ -122,7 +130,7 @@ namespace RealEstateApp.Services.Repository
                         LastName = "Han bygger",
                         Phone = "+455323423"
                     },
-                    ContractFilePath = GetPath()
+                    ContractFilePath = propertyFile
                 },
                 new Property
                 {
@@ -138,7 +146,7 @@ namespace RealEstateApp.Services.Repository
                         LastName = "Han bygger",
                         Phone = "+450879808"
                     },
-                    ContractFilePath = GetPath()
+                    ContractFilePath = propertyFile
                 }
             };
         }
