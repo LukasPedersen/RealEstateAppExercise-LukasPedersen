@@ -55,7 +55,14 @@ namespace RealEstateApp.Services.Repository
                         "This lovely house has 180 degree ocean views and features state of the art appliances.",
                     Beds = 3, Baths = 1, Parking = 1, LandSize = 500, Price = 600000, AgentId = "agent_2",
                     ImageUrls = GetPropertyImageUrls(1),
-                    Latitude = -33.739499, Longitude = 151.300683
+                    Latitude = -33.739499, Longitude = 151.300683,
+                    PropertyVendor = new Vendor
+                    {
+                        Email = "fakeMail@hotmail.com",
+                        FirstName = "Bob",
+                        LastName = "Han bygger",
+                        Phone = "+45867584954"
+                    }
                 },
                 new Property
                 {
@@ -64,7 +71,14 @@ namespace RealEstateApp.Services.Repository
                         "Situated in a prime location close to shops, this property represents excellent value for money.",
                     Beds = 4, Baths = 2, Parking = 3, LandSize = 620, Price = 750000, AgentId = "agent_2",
                     ImageUrls = GetPropertyImageUrls(2),
-                    Latitude =  -33.737897, Longitude = 151.302152
+                    Latitude =  -33.737897, Longitude = 151.302152,
+                    PropertyVendor = new Vendor
+                    {
+                        Email = "fakeMail@hotmail.com",
+                        FirstName = "Bob",
+                        LastName = "Han bygger",
+                        Phone = "+45432523443"
+                    }
                 },
                 new Property
                 {
@@ -72,7 +86,14 @@ namespace RealEstateApp.Services.Repository
                     Description = "This near new architecturally designed house is a unique offering in the area.",
                     Beds = 2, Baths = 2, Parking = 1, LandSize = 300, Price = 825000, AgentId = "agent_2",
                     ImageUrls = GetPropertyImageUrls(3),
-                    Latitude = -33.737574, Longitude = 151.300586
+                    Latitude = -33.737574, Longitude = 151.300586,
+                    PropertyVendor = new Vendor
+                    {
+                        Email = "fakeMail@hotmail.com",
+                        FirstName = "Bob",
+                        LastName = "Han bygger",
+                        Phone = "+454525762"
+                    }
                 },
                 new Property
                 {
@@ -81,7 +102,14 @@ namespace RealEstateApp.Services.Repository
                         "Located in one of the most sought after streets in the area, this charming house has a lot going for it.",
                     Beds = 3, Baths = 1, Parking = 3, LandSize = 450, Price = 480000, AgentId = "agent_1",
                     ImageUrls = GetPropertyImageUrls(4),
-                    Latitude = -33.729635, Longitude = 151.298172
+                    Latitude = -33.729635, Longitude = 151.298172,
+                    PropertyVendor = new Vendor
+                    {
+                        Email = "fakeMail@hotmail.com",
+                        FirstName = "Bob",
+                        LastName = "Han bygger",
+                        Phone = "+455323423"
+                    }
                 },
                 new Property
                 {
@@ -89,7 +117,14 @@ namespace RealEstateApp.Services.Repository
                     Description = "Newly renovated house in great location close to the beach.",
                     Beds = 1, Baths = 1, Parking = 1, LandSize = 370, Price = 610000, AgentId = "agent_1",
                     ImageUrls = GetPropertyImageUrls(5),
-                    Latitude = -33.732073, Longitude = 151.297265
+                    Latitude = -33.732073, Longitude = 151.297265,
+                    PropertyVendor = new Vendor
+                    {
+                        Email = "fakeMail@hotmail.com",
+                        FirstName = "Bob",
+                        LastName = "Han bygger",
+                        Phone = "+450879808"
+                    }
                 }
             };
         }

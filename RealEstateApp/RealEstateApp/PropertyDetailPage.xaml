@@ -81,12 +81,60 @@
                 Margin="0,0,0,20"
                 FontSize="14"
                 Text="{Binding Property.Description}" />
+
+            <StackLayout Grid.Row="7" Orientation="Horizontal">
+                <Label
+                    FontFamily="FA-solid"
+                    FontSize="14"
+                    Text="{x:Static fa:IconFont.User}"/>
+                <Label
+                    Margin="0,0,0,20"
+                    FontSize="14"
+                    Text="{Binding Property.PropertyVendor.FullName}" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="8">
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        Margin="0,15,0,0"
+                        FontFamily="FA-solid"
+                        FontSize="14"
+                        Text="{x:Static fa:IconFont.MailBulk}"/>
+                    <Button
+                        x:Name="Email_Button"
+                        FontSize="14"
+                        TextColor="Blue"
+                        BackgroundColor="White"
+                        BorderColor="White"
+                        Clicked="Email_Button_Clicked"
+                        Text="{Binding Property.PropertyVendor.Email}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        Margin="0,15,0,0"
+                        FontFamily="FA-solid"
+                        FontSize="14"
+                        Text="{x:Static fa:IconFont.Phone}"/>
+                    <Button
+                        x:Name="Phone_Button"
+                        FontSize="14"
+                        TextColor="Blue"
+                        BackgroundColor="White"
+                        BorderColor="White"
+                        Clicked="Phone_Button_Clicked_1"
+                        Text="{Binding Property.PropertyVendor.Phone}" />
+                </StackLayout>
+                
+            </StackLayout>
+            
+            
+
             <Label
-                Grid.Row="7"
+                Grid.Row="9"
                 FontAttributes="Bold"
                 FontSize="14"
                 Text="Listed by:" />
-            <Grid Grid.Row="8">
+            <Grid Grid.Row="9">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
