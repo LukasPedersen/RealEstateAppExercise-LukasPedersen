@@ -60,6 +60,7 @@ namespace RealEstateApp
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            Barometer.ReadingChanged -= Barometer_ReadingChanged;
             Barometer.Stop();
         }
 
