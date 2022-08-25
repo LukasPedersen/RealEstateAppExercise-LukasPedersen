@@ -181,5 +181,35 @@ namespace RealEstateApp
                 File = new ReadOnlyFile(Property.ContractFilePath)
             });
         }
+
+        private async void ShareAlt_Button_Clicked(object sender, EventArgs e)
+        {
+            var text = new ShareTextRequest
+            {
+                Uri = Property.MainImageUrl,
+                Subject = "A property you may be interested in",
+                Text = $"Address: {Property.Address}. Price: {Property.Price}. Beds {Property.Beds}.",
+                Title = "Share Property"
+            };
+
+            try
+            {
+                await Share.RequestAsync(text);
+            }
+            catch (FeatureNotSupportedException)
+            {
+
+                throw;
+            }
+        }
+
+        private void ShareSquare_Button_Clicked(object sender, EventArgs e)
+        {
+            var file = new ShareFileRequest
+            {
+                Title = $"{Property.Address} Contract",
+                File = new ShareFile(Property.ContractFilePath)
+            };
+        }
     }
 }

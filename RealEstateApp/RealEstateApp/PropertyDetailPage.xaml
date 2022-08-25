@@ -74,6 +74,22 @@
                     FontSize="14"
                     Clicked="File_Button_Clicked"
                     Text="{x:Static fa:IconFont.FileSignature}"/>
+                <Button
+                    x:Name="ShareAlt_Button"
+                    Grid.Row="3"
+                    WidthRequest="50"
+                    FontFamily="FA-solid"
+                    FontSize="14"
+                    Clicked="ShareAlt_Button_Clicked"
+                    Text="{x:Static fa:IconFont.ShareAlt}"/>
+                <Button
+                    x:Name="ShareSquare_Button"
+                    Grid.Row="3"
+                    WidthRequest="50"
+                    FontFamily="FA-solid"
+                    FontSize="14"
+                    Clicked="ShareSquare_Button_Clicked"
+                    Text="{x:Static fa:IconFont.ShareAltSquare}"/>
             </StackLayout>
             <Grid Grid.Row="4"
                   RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
