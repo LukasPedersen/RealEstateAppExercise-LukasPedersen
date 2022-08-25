@@ -1,4 +1,5 @@
-﻿using RealEstateApp.Models;
+﻿using System.Text.Json;
+using RealEstateApp.Models;
 using RealEstateApp.Services;
 using System;
 using System.Collections.Generic;
@@ -210,6 +211,21 @@ namespace RealEstateApp
                 Title = $"{Property.Address} Contract",
                 File = new ShareFile(Property.ContractFilePath)
             };
+        }
+
+        private async void Clipboard_Button_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                string jsonString = JsonSerializer.Serialize(Property);
+
+                await Clipboard.SetTextAsync(jsonString);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
