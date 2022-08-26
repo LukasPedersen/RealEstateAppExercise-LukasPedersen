@@ -53,6 +53,9 @@ namespace RealEstateApp
 
         public string StatusMessage { get; set; }
 
+        public float TTSVolume { get; set; }
+        public float TTSPitch { get; set; }
+
         public Color StatusColor { get; set; } = Color.White;
         #endregion
 
@@ -107,7 +110,9 @@ namespace RealEstateApp
 
         protected override void OnAppearing()
         {
-           CheckConnection();
+            TTSVolume = Preferences.Get("TTSVolumePreferences", .74f);
+            TTSPitch = Preferences.Get("TTSPitchPreferences", 1.0f);
+            CheckConnection();
         }
 
         protected override void OnDisappearing()
@@ -164,8 +169,8 @@ namespace RealEstateApp
             ttscts = new CancellationTokenSource();
             var ttsSettings = new SpeechOptions()
             {
-                Volume = .75f,
-                Pitch = 1.0f
+                Volume = TTSVolume,
+                Pitch = TTSPitch
             };
 
             Vibration.Vibrate();
@@ -233,6 +238,11 @@ namespace RealEstateApp
         private async void DraftingCompass_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CompassPage(Property));
+        }
+
+        private void TTS_Description_Button_Clicked(object sender, EventArgs e)
+        {
+            ttscts = new CancellationTokenSource();
         }
     }
 }

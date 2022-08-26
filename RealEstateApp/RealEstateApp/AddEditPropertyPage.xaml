@@ -144,6 +144,12 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
+                    <Button
+                        x:Name="TTS_Description_Button"
+                        FontFamily="FA-solid"
+                        FontSize="14"
+                        Clicked="TTS_Description_Button_Clicked"
+                        Text="{x:Static fa:IconFont.PhoneVolume}"/>
                     <Editor
                         Margin="0"
                         FontSize="Medium"
