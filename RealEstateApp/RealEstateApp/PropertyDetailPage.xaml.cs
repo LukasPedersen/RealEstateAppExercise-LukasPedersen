@@ -49,7 +49,7 @@ namespace RealEstateApp
 
         private async void Phone_Button_Clicked_1(object sender, System.EventArgs e)
         {
-            string action = await DisplayActionSheet($"{Property.PropertyVendor.Phone}", "Cancel", "OK", "Call", "SMS");
+            string action = await DisplayActionSheet($"{Property.PropertyVendor.Phone}", "Cancel", null, "Call", "SMS");
             if (action == "Call")
             {
                 try

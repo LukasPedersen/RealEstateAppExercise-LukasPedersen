@@ -35,6 +35,7 @@
                 Text="{Binding Property.Address}" />
             <StackLayout Grid.Row="3" Orientation="Horizontal">
                 <Button
+                    Margin="-15, 0, 0, 0"
                     x:Name="Map_Button"
                     Grid.Row="3"
                     WidthRequest="40"
